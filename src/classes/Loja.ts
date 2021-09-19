@@ -11,4 +11,16 @@ export default class Loja {
         this.endereco = endereco
         this.estoque = estoque
     }
+
+    getEstoque() {
+        return this.estoque
+    }
+
+    getCNPJ() {
+        return this.cnpj
+    }
+
+    getEndereco() {
+        return this.endereco
+    }
 }

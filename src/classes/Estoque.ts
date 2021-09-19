@@ -1,9 +1,21 @@
 import Produto from "./Produto"
 
 export default class Estoque {
-    private produtos : Array<Produto>
+    private produtos : Array<any>
 
-    constructor(produtos : Array<Produto>) {
-        this.produtos = produtos
+    constructor() {
+        this.produtos = []
+    }
+
+    adicionarProduto(produto : Produto) {
+        this.produtos.push(produto)
+    } 
+
+    removerProduto(produto : Produto) {
+        this.produtos.map(prod => {
+            if(prod[0].id === produto.id) { 
+                prod[1]--
+            }
+        })
     }
 }
