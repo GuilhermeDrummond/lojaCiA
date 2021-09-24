@@ -72,6 +72,8 @@ export const Form = styled.form`
         background: var(--primaria);
         color: white;
 
+        transition: filter 0.2s;
+
         &:hover {
             filter: brightness(80%);
         }

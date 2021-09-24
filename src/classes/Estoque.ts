@@ -7,9 +7,9 @@ export default class Estoque {
         this.produtos = []
     }
 
-    adicionarProduto(produto : Produto) {
-        this.produtos.push(produto)
-    } 
+    adicionarProduto(produto : Produto, quantidade : number) {
+        this.produtos.push([produto, quantidade])
+    }  
 
     removerProduto(produto : Produto) {
         this.produtos.map(prod => {
@@ -17,5 +17,9 @@ export default class Estoque {
                 prod[1]--
             }
         })
+    }
+
+    getProdutos() {
+        return this.produtos
     }
 }
