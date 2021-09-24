@@ -19,7 +19,7 @@ export function ProductsList() {
             } */}
 
             {
-                catalogoCompleto.map(item => <p>{item[0].nome}</p>)
+                catalogoCompleto.map(item => <p key={Math.random() * 10000}>{item[0].nome}</p>)
             }
         </div>
     )

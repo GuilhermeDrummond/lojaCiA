@@ -16,6 +16,8 @@ export default class Estoque {
             if(prod[0].id === produto.id) { 
                 prod[1]--
             }
+            
+            return true
         })
     }
 
