@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Nav = styled.nav`
     height: 3rem;
     
-    background: #418CFB;
+    background: var(--primaria);
     color: white;
 
     width: 100%;
@@ -35,7 +35,7 @@ export const Nav = styled.nav`
 
         font-size: 1rem;
 
-        transition: filter 0.3s;
+        transition: transform 0.3s;
 
 
         &:last-child {
@@ -43,7 +43,7 @@ export const Nav = styled.nav`
         }
 
         &:hover {
-            filter: brightness(80%);
+            transform: translateY(-2px);
         }
 
         &:active {

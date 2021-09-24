@@ -4,11 +4,14 @@ export const GlobalStyle = createGlobalStyle`
 
     :root{
         font-family: Arial, Helvetica, sans-serif;
+        
+        --primaria: #418CFB;
     }
 
     @media (max-width: 860px){
         :root {
             font-size: 12px;
+
         }
 
         body {
@@ -22,12 +25,9 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
     }
 
-    html {
-        background: var(--background);
-    }
-
     body {
         -webkit-font-smoothing: antialiased;
+        background: #e8e8e8;
     }
 
     button {

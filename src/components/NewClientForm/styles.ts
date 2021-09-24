@@ -1,18 +1,31 @@
 import styled from 'styled-components'
 
+export const Container = styled.div`
+    background: white;
+
+    border-radius: 10px;
+
+    padding: 10px 5px;
+    margin: 20px auto;
+
+    width: 70%;
+`
+
 export const Form = styled.form`
     display: flex;
     flex-direction: column;
 
     margin: 0 auto;
 
-    width: 50%;
+    width: 80%;
 
     margin-top: 20px;
 
     input {
         height: 2rem;
         width: 100%;
+
+        outline: 0;
 
         font-size: 1.1rem;
 
@@ -23,8 +36,17 @@ export const Form = styled.form`
 
         padding-left: 10px;
 
+        ::placeholder {
+            opacity: 40%;
+        }
+
         & + input {
             margin-top: 5px;
+        }
+
+        &:focus {
+            border-bottom: 2px solid var(--primaria);
+            border-radius: 5px 5px 0 0;
         }
     }
 
@@ -44,11 +66,10 @@ export const Form = styled.form`
 
         padding: 0.8rem;
         margin-top: 15px;
-        margin-bottom: 50px;
 
         font-size: 1.2rem;
 
-        background: #418CFB;
+        background: var(--primaria);
         color: white;
 
         &:hover {
@@ -58,5 +79,29 @@ export const Form = styled.form`
         &:active {
             transform: translateY(4px);
         }
+    }
+
+    .campos-juntos {
+        display: flex;
+        justify-content: space-between;
+
+        input {
+            margin-top: 5px;
+        }
+        
+        div {
+            width: 45%;
+        }
+    }
+`
+
+export const Title = styled.h1`
+    text-align: center;
+
+    font-size: 2rem;    
+
+    input + & {
+        margin-top: 20px;
+        margin-bottom: 10px;
     }
 `

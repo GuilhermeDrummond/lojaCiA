@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Cliente from '../../classes/Cliente'
 import Endereco from '../../classes/Endereco'
-import { Form } from './styles'
+import { Container, Form, Title } from './styles'
 
 interface ClientProps {
     nome : string
@@ -48,114 +48,150 @@ export function NewClientForm() {
             endereco
         )
 
-        console.log(cliente)
+        console.log(cliente) // Para testar
     }
 
     return (
 
-        <Form onSubmit={createClient}>
-            <label>Nome</label>
-            <input
-                placeholder="Nome"
-                value={clientData.nome || ''}
-                onChange={e => {
-                    setClientData({...clientData, nome: e.target.value})
-                }}
-            />
+        <Container>
+            <Form onSubmit={createClient}>
 
-            <label>CPF</label>
-            <input
-                placeholder="CPF"
-                value={clientData.cpf || ''}
-                onChange={e => {
-                    setClientData({...clientData, cpf: e.target.value})
-                }}
-            />
+                <Title>Dados pessoais</Title>
 
-            <label>E-mail</label>
-            <input
-                placeholder="Email"
-                value={clientData.email || ''}
-                onChange={e => {
-                    setClientData({...clientData, email: e.target.value})
-                }}
-            />
+                <label>Nome</label>
+                <input
+                    placeholder="Fulano de Tal ..."
+                    value={clientData.nome}
+                    onChange={e => {
+                        setClientData({...clientData, nome: e.target.value})
+                    }}
+                />
 
-            <label>Telefone</label>
-            <input
-                placeholder="Telefone"
-                value={clientData.telefone || ''}
-                onChange={e => {
-                    setClientData({...clientData, telefone: e.target.value})
-                }}
-            />
+                <div className='campos-juntos'>
 
-            {/* ENDERECO */}
+                    <div>
+                        <label>CPF</label>
+                        <input
+                            placeholder="999.999.999-99"
+                            value={clientData.cpf}
+                            onChange={e => {
+                                setClientData({...clientData, cpf: e.target.value})
+                            }}
+                        />
+                    </div>
 
-            <label>Rua</label>
-            <input
-                placeholder="Rua"
-                value={addressData.rua || ''}
-                onChange={ e => {
-                    setAddressData({...addressData, rua: e.target.value})
-                }}
-            />
+                    <div>
+                        <label>Telefone</label>
+                        <input
+                            placeholder="(99) 99999-9999"
+                            value={clientData.telefone}
+                            onChange={e => {
+                                setClientData({...clientData, telefone: e.target.value})
+                            }}
+                        />
+                    </div>
 
-            <label>Bairro</label>  
-            <input
-                placeholder="Bairro"
-                value={addressData.bairro || ''}
-                onChange={ e => {
-                    setAddressData({...addressData, bairro: e.target.value})
-                }}
-            />
+                </div>
 
-            <label>Número</label>  
-            <input
-                placeholder="Número"
-                value={addressData.numero || ''}
-                onChange={ e => {
-                    setAddressData({...addressData, numero: Number(e.target.value)})
-                }}
-            />
+                <label>E-mail</label>
+                <input
+                    placeholder="exemplo@cia.com"
+                    value={clientData.email}
+                    onChange={e => {
+                        setClientData({...clientData, email: e.target.value})
+                    }}
+                />
 
-            <label>CEP</label>  
-            <input
-                placeholder="CEP"
-                value={addressData.cep || ''}
-                onChange={ e => {
-                    setAddressData({...addressData, cep: e.target.value})
-                }}
-            />
 
-            <label>Cidade</label>  
-            <input
-                placeholder="Cidade"
-                value={addressData.cidade || ''}
-                onChange={ e => {
-                    setAddressData({...addressData, cidade: e.target.value})
-                }}
-            />
+                {/* ENDERECO */}
 
-            <label>UF</label>  
-            <input
-                placeholder="UF"
-                value={addressData.uf || ''}
-                onChange={ e => {
-                    setAddressData({...addressData, uf: e.target.value})
-                }}
-            />
+                <Title>Endereço</Title>
 
-            <label>Complemento</label>  
-            <input
-                placeholder="Complemento"
-                value={addressData.complemento || ''}
-                onChange={ e => {
-                    setAddressData({...addressData, complemento: e.target.value})
-                }}
-            />  
+                <div className="campos-juntos">
+                    <div>
+                        <label>Rua</label>
+                        <input
+                            placeholder="Rua dos Bobos..."
+                            value={addressData.rua}
+                            onChange={ e => {
+                                setAddressData({...addressData, rua: e.target.value})
+                            }}
+                        />
+                    </div>
+                    <div>
+                        <label>Bairro</label>  
+                        <input
+                            placeholder="Jardim Jandira..."
+                            value={addressData.bairro}
+                            onChange={ e => {
+                                setAddressData({...addressData, bairro: e.target.value})
+                            }}
+                        />
+                    </div>
+                </div>
 
-            <button type='submit'>Enviar</button>            
-        </Form>
+
+
+                <div className='campos-juntos'>
+                    <div>
+                        <label>Número</label>  
+                        <input
+                            placeholder="999"
+                            value={addressData.numero}
+                            onChange={ e => {
+                                setAddressData({...addressData, numero: Number(e.target.value)})
+                            }}
+                        />
+                    </div>
+
+                    <div>
+                        <label>CEP</label>  
+                        <input
+                            placeholder="99999-99"
+                            value={addressData.cep}
+                            onChange={ e => {
+                                setAddressData({...addressData, cep: e.target.value})
+                            }}
+                        />
+                    </div>
+                </div>
+
+                <div className='campos-juntos'>
+                    <div>
+                        <label>Cidade</label>  
+                        <input
+                            placeholder="Iconha..."
+                            value={addressData.cidade}
+                            onChange={ e => {
+                                setAddressData({...addressData, cidade: e.target.value})
+                            }}
+                        />
+                    </div>
+                    <div>
+                        <label>UF</label>  
+                        <input
+                            placeholder="Espírito Santo..."
+                            value={addressData.uf}
+                            onChange={ e => {
+                                setAddressData({...addressData, uf: e.target.value})
+                            }}
+                        />
+                    </div>
+                </div>
+
+
+
+                <label>Complemento</label>  
+                <input
+                    placeholder="Apto, bloco, ..."
+                    value={addressData.complemento}
+                    onChange={ e => {
+                        setAddressData({...addressData, complemento: e.target.value})
+                    }}
+                />  
+
+                <button type='submit'>Enviar</button>            
+            </Form>
+        </Container>
     )
 }
