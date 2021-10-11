@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
 import Cliente from '../../classes/Cliente'
 import Endereco from '../../classes/Endereco'
 import { Container, Form, Title } from './styles'
@@ -27,7 +27,7 @@ export function NewClientForm() {
 
     const [addressData, setAddressData] = useState<EnderecoProp>({} as EnderecoProp)
 
-    function createClient(e : any){
+    function createClient(e : FormEvent){
         e.preventDefault()
 
         const endereco = new Endereco(

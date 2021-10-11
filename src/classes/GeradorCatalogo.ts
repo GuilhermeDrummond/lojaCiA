@@ -77,6 +77,6 @@ est3.adicionarProduto(p27, 53)
 est3.adicionarProduto(p30, 82)
 
 
-export const Loja1 : Loja = new Loja('47.989.291/0001-56', end1, est1)
-export const Loja2 : Loja = new Loja('79.855.589/0001-60', end2, est2)
-export const Loja3 : Loja = new Loja('62.622.452/0001-62', end3, est3)
+export const Loja1 : Loja = new Loja('Unidade de São Paulo', '47.989.291/0001-56', end1, est1)
+export const Loja2 : Loja = new Loja('Undiade de Vila Velha', '79.855.589/0001-60', end2, est2)
+export const Loja3 : Loja = new Loja('Unidade de Iconha', '62.622.452/0001-62', end3, est3)

@@ -17,7 +17,7 @@ export default class Estoque {
                 prod[1]--
             }
             
-            return true
+            return prod
         })
     }
 
