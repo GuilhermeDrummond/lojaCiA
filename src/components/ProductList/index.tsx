@@ -1,33 +1,14 @@
 import { useState } from 'react'
-import { Loja1, Loja2, Loja3 } from '../../classes/Gerador'
 import Loja from '../../classes/Loja'
 import Produto from '../../classes/Produto'
 import { Card, Container } from './styles'
 
 type CarrinhoProps = {
-    onAddCart : (prod : Produto) => void
+    onAddCart : (prod : Produto, loja : Loja) => void
+    catalogoCompleto : Array<Loja>
 }
 
-export function ProductsList({ onAddCart }: CarrinhoProps) {
-
-    const [catalogoCompleto, setCatalogoCompleto] = useState([
-        Loja1, 
-        Loja2, 
-        Loja3
-    ])
-
-    function adicionarCarrinho(item : Produto, loja : Loja) {
-
-        setCatalogoCompleto(catalogoCompleto.map(elem => {
-            if (elem.getCNPJ() === loja.getCNPJ()) {
-                elem.getEstoque().removerProduto(item)
-            }
-            
-            return elem
-        }))
-
-        onAddCart(item)        
-    }
+export function ProductsList({ onAddCart, catalogoCompleto }: CarrinhoProps) {
 
     return (
         <Container>
@@ -39,7 +20,7 @@ export function ProductsList({ onAddCart }: CarrinhoProps) {
                         return (
                             <Card key={item.produto.id}>
                                 <div className='products'>
-                                    <img src="http://placehold.it/200x200"/>
+                                    <img src="http://placehold.it/150x150"/>
 
                                     <div className='products-info'>
                                         <div>
@@ -56,7 +37,7 @@ export function ProductsList({ onAddCart }: CarrinhoProps) {
                                 </div>
 
                                 <button
-                                    onClick={() => adicionarCarrinho(item.produto, loja)}
+                                    onClick={() => onAddCart(item.produto, loja)}
                                     disabled={item.quantidade === 0 ? true : false}
                                 >
                                     Adicionar ao carrinho

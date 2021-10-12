@@ -7,7 +7,7 @@ export const LoginForm = styled.div`
 
     padding: 2rem;
 
-    width: 20%;
+    width: 30%;
 
     align-self: center;
 

@@ -22,6 +22,11 @@ export default class Carrinho {
         }
     }
 
+    removerProduto(prod : Produto) {
+        const produto = this.produtos.find(elem => elem.produto.id === prod.id)
+        if(produto) produto.quantidade--
+    }
+
     getProdutos(){
         return this.produtos
     }

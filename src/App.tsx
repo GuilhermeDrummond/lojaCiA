@@ -9,9 +9,10 @@ import { GlobalStyle } from './styles/global';
 
 import Produto from './classes/Produto'
 import Cliente from './classes/Cliente';
-import { clientePadrao } from './classes/Gerador';
+import { clientePadrao, Loja1, Loja2, Loja3 } from './classes/Gerador';
 import Carrinho from './classes/Carrinho';
 import { Cart } from './components/Cart';
+import Loja from './classes/Loja';
 
 
 export default function App() {
@@ -32,15 +33,53 @@ export default function App() {
     setCartList(newCartList)
   }
 
-  // const [isLogged, setIslogged] = useState(false)
+  function handleRemoveCart(prod : Produto){
+    const newCartList = cartList
+    newCartList.removerProduto(prod)
+    setCartList(newCartList)
+
+    const lojaDoProduto = catalogoCompleto.find(elem => elem.getEstoque().getProdutos().find(item => {
+      return item.produto.id === prod.id
+    }))
+
+    setCatalogoCompleto(catalogoCompleto.map(elem => {
+      if (elem.getCNPJ() === lojaDoProduto?.getCNPJ()) {
+          elem.getEstoque().adicionarProduto(prod)
+      }
+      
+      return elem
+  }))
+  }
+
+  const [catalogoCompleto, setCatalogoCompleto] = useState([
+    Loja1, 
+    Loja2, 
+    Loja3
+  ])
+
+  function handleAddCartStore(item : Produto, loja : Loja) {
+    
+    setCatalogoCompleto(catalogoCompleto.map(elem => {
+        if (elem.getCNPJ() === loja.getCNPJ()) {
+            elem.getEstoque().removerProduto(item)
+        }
+        
+        return elem
+    }))
+
+    handleAddCart(item)        
+  }
 
   return (
     <>
       <Router>
         <Navbar />  
         <Route path='/' exact render={props => <Login {...props} users={usersList} />} />
-        <Route path='/products' exact render={props => <ProductsList {...props} onAddCart={handleAddCart} />} />
-        <Route path='/cart' exact render={props => <Cart {...props} carrinho={cartList} />} />
+        <Route 
+          path='/products' exact 
+          render={props => <ProductsList {...props} onAddCart={handleAddCartStore} catalogoCompleto= {catalogoCompleto} />} 
+        />
+        <Route path='/cart' exact render={props => <Cart {...props} carrinho={cartList} onRemove={handleRemoveCart} />} />
         <Route path='/create-client' exact render={props => <NewClientForm {...props} onSubmit={handleSubmitNewClientForm} />} />
       </Router>
 

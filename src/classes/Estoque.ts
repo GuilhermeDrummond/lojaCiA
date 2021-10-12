@@ -12,8 +12,14 @@ export default class Estoque {
         this.produtos = []
     }
 
-    adicionarProduto(produto : Produto, quantidade : number) {
-        this.produtos.push({produto, quantidade})
+    adicionarProduto(prod : Produto, quantidade : number = 0) {
+        const produtoExiste = this.produtos.find(elem => elem.produto.id === prod.id)
+        
+        if(produtoExiste){
+            produtoExiste.quantidade++
+        } else {
+            this.produtos.push({produto: prod, quantidade})
+        }
     }  
 
     removerProduto(produto : Produto) {
