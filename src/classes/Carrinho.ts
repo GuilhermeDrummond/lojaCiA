@@ -12,7 +12,7 @@ export default class Carrinho {
         this.produtos = []
     }
 
-    adicionarProduto(prod : Produto) {
+    adicionarProduto(prod : Produto) : void {
         const produtoExiste = this.produtos.find(elem => elem.produto.id === prod.id)
         
         if(produtoExiste){
@@ -22,12 +22,26 @@ export default class Carrinho {
         }
     }
 
-    removerProduto(prod : Produto) {
+    removerProduto(prod : Produto) : void {
         const produto = this.produtos.find(elem => elem.produto.id === prod.id)
         if(produto) produto.quantidade--
     }
 
-    getProdutos(){
+    totalCarrinho() : number {
+        let total = 0
+
+        this.produtos.forEach(elem => {
+            total += elem.quantidade * elem.produto.preco
+        })
+
+        return total
+    }
+
+    limparCarrinho() : Carrinho {
+        return new Carrinho()
+    } 
+
+    getProdutos() : Array<ListaProdutos> {
         return this.produtos
     }
 }

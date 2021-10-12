@@ -74,12 +74,15 @@ export default function App() {
     <>
       <Router>
         <Navbar />  
-        <Route path='/' exact render={props => <Login {...props} users={usersList} />} />
         <Route 
           path='/products' exact 
           render={props => <ProductsList {...props} onAddCart={handleAddCartStore} catalogoCompleto= {catalogoCompleto} />} 
         />
-        <Route path='/cart' exact render={props => <Cart {...props} carrinho={cartList} onRemove={handleRemoveCart} />} />
+        <Route path='/login' exact render={props => <Login {...props} users={usersList} />} />
+        <Route 
+          path='/cart' exact 
+          render={props => <Cart {...props} carrinho={cartList} onRemove={handleRemoveCart}/>} 
+        />
         <Route path='/create-client' exact render={props => <NewClientForm {...props} onSubmit={handleSubmitNewClientForm} />} />
       </Router>
 

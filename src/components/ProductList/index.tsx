@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Loja from '../../classes/Loja'
 import Produto from '../../classes/Produto'
+import { Title } from './styles'
 import { Card, Container } from './styles'
 
 type CarrinhoProps = {
@@ -12,7 +13,7 @@ export function ProductsList({ onAddCart, catalogoCompleto }: CarrinhoProps) {
 
     return (
         <Container>
-            <h1>OLHA OS PRODUTOS AE MINHA GENTE</h1>
+            <Title>Catálogo de Produtos</Title>
 
             {
                 catalogoCompleto.map(loja => {
@@ -26,7 +27,7 @@ export function ProductsList({ onAddCart, catalogoCompleto }: CarrinhoProps) {
                                         <div>
                                             <h1>{item.produto.nome}</h1>
 
-                                            <p className='products-price'>R$ {item.produto.preco}0</p>
+                                            <p className='products-price'>R$ {(item.produto.preco).toFixed(2)}</p>
                                         </div>
 
                                         <p className= 'products-rest'>

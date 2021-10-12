@@ -5,7 +5,6 @@ export const Container = styled.div`
     margin: 20px auto;
 
     width: 70%;
-
     
     border-radius: 10px;
     `
@@ -77,4 +76,9 @@ export const Card = styled.div`
             transform: translateY(4px);
         }
     }
+`
+export const Title = styled.h1`
+    margin-bottom: 30px;
+    font-size: 2rem; 
+    text-align: center;
 `
