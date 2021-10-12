@@ -12,7 +12,7 @@ export function Navbar() {
             
             <div>
                 <button onClick={() => history.push('/products')}>Produtos</button>
-                <button>Carrinho</button>
+                <button onClick={() => history.push('/cart')}>Carrinho</button>
                 <button onClick={() => history.push('/create-client')}>Minha Conta</button>
                 <button onClick={() => history.push('/')}>Sair</button>
             </div>

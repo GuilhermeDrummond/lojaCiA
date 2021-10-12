@@ -1,3 +1,4 @@
+import Cliente from './Cliente'
 import Endereco from './Endereco'
 import Estoque from './Estoque'
 import Loja from './Loja'
@@ -80,3 +81,8 @@ est3.adicionarProduto(p30, 82)
 export const Loja1 : Loja = new Loja('Unidade de São Paulo', '47.989.291/0001-56', end1, est1)
 export const Loja2 : Loja = new Loja('Undiade de Vila Velha', '79.855.589/0001-60', end2, est2)
 export const Loja3 : Loja = new Loja('Unidade de Iconha', '62.622.452/0001-62', end3, est3)
+
+// =======================================================================================================
+
+const end4 = new Endereco('Rua dos Anjos', 'Céu Azul', 33, '29280-000', 'Divinópolis', 'Você vai saber quando ver')
+export const clientePadrao = new Cliente('Ricardo', '123.654.741-12', '(27) 98765-4321', 'ricardo@uvv.br', 'admin', end4)

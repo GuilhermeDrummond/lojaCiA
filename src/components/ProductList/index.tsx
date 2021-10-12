@@ -1,11 +1,14 @@
 import { useState } from 'react'
-import { Loja1, Loja2, Loja3 } from '../../classes/GeradorCatalogo'
+import { Loja1, Loja2, Loja3 } from '../../classes/Gerador'
 import Loja from '../../classes/Loja'
 import Produto from '../../classes/Produto'
 import { Card, Container } from './styles'
 
+type CarrinhoProps = {
+    onAddCart : (prod : Produto) => void
+}
 
-export function ProductsList() {
+export function ProductsList({ onAddCart }: CarrinhoProps) {
 
     const [catalogoCompleto, setCatalogoCompleto] = useState([
         Loja1, 
@@ -22,47 +25,39 @@ export function ProductsList() {
             
             return elem
         }))
+
+        onAddCart(item)        
     }
 
     return (
         <Container>
             <h1>OLHA OS PRODUTOS AE MINHA GENTE</h1>
 
-            {/* {
-                Loja1.getEstoque().getProdutos().map(item => <p>{item[0].nome}</p>)
-            }
-            {
-                Loja2.getEstoque().getProdutos().map(item => <p>{item[0].nome}</p>)
-            }
-            {
-                Loja3.getEstoque().getProdutos().map(item => <p>{item[0].nome}</p>)
-            } */}
-
             {
                 catalogoCompleto.map(loja => {
                     return loja.getEstoque().getProdutos().map(item => {
                         return (
-                            <Card key={item[0].id}>
+                            <Card key={item.produto.id}>
                                 <div className='products'>
                                     <img src="http://placehold.it/200x200"/>
 
                                     <div className='products-info'>
                                         <div>
-                                            <h1>{item[0].nome}</h1>
+                                            <h1>{item.produto.nome}</h1>
 
-                                            <p className='products-price'>R$ {item[0].preco}0</p>
+                                            <p className='products-price'>R$ {item.produto.preco}0</p>
                                         </div>
 
                                         <p className= 'products-rest'>
-                                            {item[0].categoria} -  Quantidade em estoque: {item[1] === 0 ? 'Indisponível' : item[1]} - {loja.getUnidade()}
+                                            {item.produto.categoria} -  Quantidade em estoque: {item.quantidade === 0 ? 'Indisponível' : item.quantidade} - {loja.getUnidade()}
                                         </p>
 
                                     </div>
                                 </div>
 
                                 <button
-                                    onClick={() => adicionarCarrinho(item[0], loja)}
-                                    disabled={item[1] === 0 ? true : false}
+                                    onClick={() => adicionarCarrinho(item.produto, loja)}
+                                    disabled={item.quantidade === 0 ? true : false}
                                 >
                                     Adicionar ao carrinho
                                 </button>

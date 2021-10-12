@@ -1,20 +1,25 @@
 import Produto from "./Produto"
 
+type ListaProdutos = {
+    produto : Produto
+    quantidade : number
+}
+
 export default class Estoque {
-    private produtos : Array<any>
+    private produtos : Array<ListaProdutos>
 
     constructor() {
         this.produtos = []
     }
 
     adicionarProduto(produto : Produto, quantidade : number) {
-        this.produtos.push([produto, quantidade])
+        this.produtos.push({produto, quantidade})
     }  
 
     removerProduto(produto : Produto) {
         this.produtos.map(prod => {
-            if(prod[0].id === produto.id) { 
-                prod[1]--
+            if(prod.produto.id === produto.id) { 
+                prod.quantidade--
             }
             
             return prod

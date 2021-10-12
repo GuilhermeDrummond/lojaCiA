@@ -3,14 +3,15 @@ import Cliente from '../../classes/Cliente'
 import Endereco from '../../classes/Endereco'
 import { Container, Form, Title } from './styles'
 
-interface ClientProps {
+type ClientProps = {
     nome : string
     cpf : string
     email : string
+    senha : string
     telefone : string
 }
 
-interface EnderecoProp {
+type EnderecoProps = {
     rua : string
     numero : number
     cep : string
@@ -20,12 +21,29 @@ interface EnderecoProp {
     bairro : string
 }
 
+type Teste = {
+    onSubmit : (newClient : Cliente) => void
+}
 
-export function NewClientForm() {
+export function NewClientForm({ onSubmit } : Teste) {
 
-    const [clientData, setClientData] = useState<ClientProps>({} as ClientProps)
+    const [clientData, setClientData] = useState<ClientProps>({
+        nome: '',
+        cpf: '',
+        email: '', 
+        senha: '', 
+        telefone: '' 
+    })
 
-    const [addressData, setAddressData] = useState<EnderecoProp>({} as EnderecoProp)
+    const [addressData, setAddressData] = useState<EnderecoProps>({
+        rua: '', 
+        numero: 0, 
+        cep: '', 
+        cidade: '', 
+        uf: '', 
+        complemento: '', 
+        bairro: '', 
+    })
 
     function createClient(e : FormEvent){
         e.preventDefault()
@@ -45,10 +63,11 @@ export function NewClientForm() {
             clientData.cpf,
             clientData.telefone,
             clientData.email,
+            clientData.senha,
             endereco
         )
 
-        console.log(cliente) // Para testar
+        onSubmit(cliente)
     }
 
     return (
@@ -92,15 +111,30 @@ export function NewClientForm() {
                     </div>
 
                 </div>
-
-                <label>E-mail</label>
-                <input
-                    placeholder="exemplo@cia.com"
-                    value={clientData.email}
-                    onChange={e => {
-                        setClientData({...clientData, email: e.target.value})
-                    }}
-                />
+                
+                <div className="campos-juntos">
+                    <div>
+                        <label>E-mail</label>
+                        <input
+                            placeholder="exemplo@cia.com"
+                            value={clientData.email}
+                            onChange={e => {
+                                setClientData({...clientData, email: e.target.value})
+                            }}
+                        />
+                    </div>
+                    <div>
+                        <label>Senha</label>
+                        <input
+                            placeholder="******"
+                            value={clientData.senha}
+                            onChange={e => {
+                                setClientData({...clientData, senha: e.target.value})
+                            }}
+                            type='password'
+                        />
+                    </div>
+                </div>
 
 
                 {/* ENDERECO */}
@@ -130,17 +164,16 @@ export function NewClientForm() {
                     </div>
                 </div>
 
-
-
                 <div className='campos-juntos'>
                     <div>
                         <label>Número</label>  
                         <input
                             placeholder="999"
-                            value={addressData.numero}
+                            // value={addressData.numero}
                             onChange={ e => {
                                 setAddressData({...addressData, numero: Number(e.target.value)})
                             }}
+                            type='number'
                         />
                     </div>
 

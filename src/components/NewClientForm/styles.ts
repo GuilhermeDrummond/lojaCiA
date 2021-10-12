@@ -102,7 +102,7 @@ export const Title = styled.h1`
 
     font-size: 2rem;    
 
-    input + & {
+    div + & {
         margin-top: 20px;
         margin-bottom: 10px;
     }

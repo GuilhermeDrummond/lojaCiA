@@ -1,19 +1,15 @@
 import { FormEvent, useState } from "react";
 import { useHistory } from "react-router-dom";
+import Cliente from "../../classes/Cliente";
 import { Container, LoginForm } from "./styles";
 
-type UserData = {
-    username : string
-    password : string
-}
-
 type UserList = {
-    users : UserData[]
+    users : Cliente[]
 }
 
 export function Login({ users } : UserList) {
 
-    const [user, setUser] = useState ('')
+    const [email, setUser] = useState ('')
     const [password, setPassword] = useState('')
 
     const history = useHistory()
@@ -22,7 +18,7 @@ export function Login({ users } : UserList) {
     function handleSubmit(e : FormEvent) {
         e.preventDefault()
 
-        const userExist = users.some(elem => elem.username === user && elem.password === password)
+        const userExist = users.some(elem => elem.usuarioValido(email, password))
 
         userExist ? history.push('/products') : alert('n')
     }
@@ -35,7 +31,7 @@ export function Login({ users } : UserList) {
                         <label>Nome de usuário</label>
                         <input 
                             type="text"
-                            value={user}
+                            value={email}
                             onChange={(e) => setUser(e.target.value)}
                         />
                     </div>
