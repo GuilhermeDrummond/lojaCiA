@@ -81,7 +81,7 @@ export default function App() {
         <Navbar onLogout={() => setActiveUser(undefined)} usuarioLogado={activeUser}/>  
 
         <Route 
-          path='/products' exact 
+          path='/products' 
           render={props => <ProductsList {...props} onAddCart={handleAddCartStore} catalogoCompleto= {catalogoCompleto} />} 
         />
 
