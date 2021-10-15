@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import {useState } from "react";
 import Carrinho from "../../classes/Carrinho";
 import { Container, Content, FinalValue, Title } from "./styles";
 
@@ -12,11 +12,11 @@ export function CheckOut({ carrinho } : CheckoutProps) {
     const [shipment, setShipment] = useState(0)
 
     function handlePayment(e : any) {
-        console.log(e.target.value)
+        setPayment(e.target.value)
     }
 
     function handleShipment(e : any) {
-        console.log(e.target.value)
+        setShipment(e.target.value)
     }
 
     return (
@@ -64,7 +64,7 @@ export function CheckOut({ carrinho } : CheckoutProps) {
 
             <FinalValue>
 
-                <p>Valor final da compra: R$ {(carrinho.totalCarrinho() + shipment).toFixed(2)}</p>
+                <p>Valor final da compra: R$ {(carrinho.totalCarrinho() + shipment + payment).toFixed(2)}</p>
                 <button>Finalizar pedido</button>
 
             </FinalValue>

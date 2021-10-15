@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Loja from '../../classes/Loja'
 import Produto from '../../classes/Produto'
 import { Title } from './styles'
@@ -21,7 +20,7 @@ export function ProductsList({ onAddCart, catalogoCompleto }: CarrinhoProps) {
                         return (
                             <Card key={item.produto.id}>
                                 <div className='products'>
-                                    <img src="http://placehold.it/150x150"/>
+                                    <img src="http://placehold.it/150x150" alt='Imagem ficticia'/>
 
                                     <div className='products-info'>
                                         <div>

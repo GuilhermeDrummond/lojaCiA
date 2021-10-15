@@ -32,7 +32,7 @@ export function Cart({ carrinho, onRemove, usuarioLogado } : CartProps) {
                         return(
                             <Card key={elem.produto.id}>
                                 <div className='products'>
-                                    <img src="http://placehold.it/150x150"/>
+                                    <img src="http://placehold.it/150x150" alt='Imagem ficticia'/>
     
                                     <div className='products-info'>
                                         <div>
@@ -56,6 +56,7 @@ export function Cart({ carrinho, onRemove, usuarioLogado } : CartProps) {
                             </Card>
                         )
                     }
+                    return true
                 })
                 : <Title>Nenhum produto adicionado ao carrinho</Title>
 
