@@ -1,4 +1,5 @@
 import { FormEvent, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import Cliente from '../../classes/Cliente'
 import Endereco from '../../classes/Endereco'
 import { Container, Form, Title } from './styles'
@@ -26,6 +27,8 @@ type Teste = {
 }
 
 export function NewClientForm({ onSubmit } : Teste) {
+
+    const history = useHistory()
 
     const [clientData, setClientData] = useState<ClientProps>({
         nome: '',
@@ -68,6 +71,7 @@ export function NewClientForm({ onSubmit } : Teste) {
         )
 
         onSubmit(cliente)
+        history.push('/login')
     }
 
     return (

@@ -3,11 +3,12 @@ import { useHistory } from "react-router-dom";
 import Cliente from "../../classes/Cliente";
 import { Container, LoginForm } from "./styles";
 
-type UserList = {
+type LoginProps = {
     users : Cliente[]
+    onLogin : ( user : Cliente) => void
 }
 
-export function Login({ users } : UserList) {
+export function Login({ users, onLogin } : LoginProps) {
 
     const [email, setUser] = useState ('')
     const [password, setPassword] = useState('')
@@ -18,9 +19,14 @@ export function Login({ users } : UserList) {
     function handleSubmit(e : FormEvent) {
         e.preventDefault()
 
-        const userExist = users.some(elem => elem.usuarioValido(email, password))
+        const userExist = users.find(elem => elem.usuarioValido(email, password))
 
-        userExist ? history.push('/products') : alert('n')
+        if(userExist) {
+            onLogin(userExist)
+            history.push('/products')
+        } else {
+            alert('Usuário não encontrado')
+        }
     }
 
     return (

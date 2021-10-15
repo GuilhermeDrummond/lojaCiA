@@ -13,9 +13,13 @@ import { clientePadrao, Loja1, Loja2, Loja3 } from './classes/Gerador';
 import Carrinho from './classes/Carrinho';
 import { Cart } from './components/Cart';
 import Loja from './classes/Loja';
+import { CheckOut } from './components/CheckOut';
+import { MyAccount } from './components/MyAccount';
 
 
 export default function App() {
+
+  const [activeUser, setActiveUser] = useState<Cliente | undefined>()
 
   const [usersList, setUsersList] = useState<Cliente[]>([
     clientePadrao
@@ -70,20 +74,41 @@ export default function App() {
     handleAddCart(item)        
   }
 
+
   return (
     <>
       <Router>
-        <Navbar />  
+        <Navbar onLogout={() => setActiveUser(undefined)} usuarioLogado={activeUser}/>  
+
         <Route 
           path='/products' exact 
           render={props => <ProductsList {...props} onAddCart={handleAddCartStore} catalogoCompleto= {catalogoCompleto} />} 
         />
-        <Route path='/login' exact render={props => <Login {...props} users={usersList} />} />
+
+        <Route 
+          path='/login' exact 
+          render={props => <Login {...props} users={usersList} onLogin={setActiveUser}/>} 
+        />
+
+        <Route 
+          path='/checkout' 
+          render={props => <CheckOut {...props} carrinho={cartList}/>}
+        />
+
         <Route 
           path='/cart' exact 
-          render={props => <Cart {...props} carrinho={cartList} onRemove={handleRemoveCart}/>} 
+          render={props => <Cart {...props} carrinho={cartList} onRemove={handleRemoveCart} usuarioLogado={activeUser}/>} 
         />
-        <Route path='/create-client' exact render={props => <NewClientForm {...props} onSubmit={handleSubmitNewClientForm} />} />
+
+        <Route 
+          path='/create-client' exact 
+          render={props => <NewClientForm {...props} onSubmit={handleSubmitNewClientForm} />} 
+        />
+
+        <Route 
+          path='/account' exact 
+          render={props => <MyAccount {...props} cliente={activeUser} />} 
+        />
       </Router>
 
       <GlobalStyle />

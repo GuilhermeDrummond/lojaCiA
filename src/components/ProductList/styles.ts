@@ -7,7 +7,7 @@ export const Container = styled.div`
     width: 70%;
     
     border-radius: 10px;
-    `
+`
 
 export const Card = styled.div`
     background: white;

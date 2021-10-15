@@ -1,13 +1,27 @@
+import { useHistory } from "react-router-dom"
 import Carrinho from "../../classes/Carrinho"
+import Cliente from "../../classes/Cliente"
 import Produto from "../../classes/Produto"
 import { Card, CartDetails, Container, Title } from "./styles"
 
 type CartProps = {
     carrinho : Carrinho
     onRemove : (prod : Produto) => void
+    usuarioLogado : Cliente | undefined
 }
 
-export function Cart({ carrinho, onRemove } : CartProps) {
+export function Cart({ carrinho, onRemove, usuarioLogado } : CartProps) {
+
+    const history = useHistory()
+
+    function handlePurchase() {
+        if(usuarioLogado) {
+            history.push('/checkout')
+        } else {
+            alert('Você precisa estar logado para poder comprar')
+            history.push('/login')
+        }
+    }
 
     return (
         <Container>
@@ -28,7 +42,7 @@ export function Cart({ carrinho, onRemove } : CartProps) {
                                             <p className='products-quantity'>Quantidade {elem.quantidade}</p>
                                         </div>
     
-                                            <p className='products-total'>Valor total: R$ {(elem.produto.preco * elem.quantidade).toFixed(2)}</p>
+                                            <p className='products-total'>Total: R$ {(elem.produto.preco * elem.quantidade).toFixed(2)}</p>
                                     </div>
                                 </div>
     
@@ -51,8 +65,8 @@ export function Cart({ carrinho, onRemove } : CartProps) {
                 carrinho.getProdutos().length > 0 && carrinho.getProdutos().find(elem => elem.quantidade > 0) &&
                 <CartDetails>
 
-                    <p>Total do carrinho: R$ {carrinho.totalCarrinho().toFixed(2)}</p>
-                    <button>Comprar</button>
+                    <p>Valor total do carrinho: R$ {carrinho.totalCarrinho().toFixed(2)}</p>
+                    <button onClick={handlePurchase}>Comprar</button>
 
                 </CartDetails>
                 

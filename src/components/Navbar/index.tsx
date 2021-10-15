@@ -1,8 +1,14 @@
 import { useHistory } from 'react-router-dom'
+import Cliente from '../../classes/Cliente'
 
 import { Nav } from './styles'
 
-export function Navbar() {
+type NavbarProps = {
+    onLogout : () => void
+    usuarioLogado : Cliente | undefined
+}
+
+export function Navbar({ onLogout, usuarioLogado } : NavbarProps) {
 
     const history = useHistory()
 
@@ -13,8 +19,19 @@ export function Navbar() {
             <div>
                 <button onClick={() => history.push('/products')}>Produtos</button>
                 <button onClick={() => history.push('/cart')}>Carrinho</button>
-                <button onClick={() => history.push('/create-client')}>Minha Conta</button>
-                <button onClick={() => history.push('/')}>Sair</button>
+                {
+                    usuarioLogado 
+                    ? <>
+                        <button onClick={() => history.push('/account')}>Minha Conta</button>
+                        <button onClick={() => {
+                            onLogout()
+                            history.push('/login')
+                        }}>
+                            Sair
+                        </button>
+                      </>
+                    : <button onClick={() => history.push('/login')}>Entrar</button>
+                }
             </div>
         </Nav>
     )

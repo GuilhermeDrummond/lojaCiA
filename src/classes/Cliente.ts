@@ -19,8 +19,12 @@ export default class Cliente {
         this.senha = senha
     }
 
-    usuarioValido(email : string, senha : string) {
+    usuarioValido(email : string, senha : string) : boolean {
         if (email === this.email && senha === this.senha) return true
         return false
+    }
+
+    getNome() : string {
+        return this.nome
     }
 }
