@@ -12,11 +12,11 @@ export function CheckOut({ carrinho } : CheckoutProps) {
     const [shipment, setShipment] = useState(0)
 
     function handlePayment(e : any) {
-        setPayment(e.target.value)
+        // setPayment(e.target.value)
     }
 
     function handleShipment(e : any) {
-        setShipment(e.target.value)
+        // setShipment(e.target.value)
     }
 
     return (

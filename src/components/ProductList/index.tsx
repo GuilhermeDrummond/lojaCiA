@@ -18,19 +18,19 @@ export function ProductsList({ onAddCart, catalogoCompleto }: CarrinhoProps) {
                 catalogoCompleto.map(loja => {
                     return loja.getEstoque().getProdutos().map(item => {
                         return (
-                            <Card key={item.produto.id}>
+                            <Card key={item.produto.getId()}>
                                 <div className='products'>
                                     <img src="http://placehold.it/150x150" alt='Imagem ficticia'/>
 
                                     <div className='products-info'>
                                         <div>
-                                            <h1>{item.produto.nome}</h1>
+                                            <h1>{item.produto.getNome()}</h1>
 
-                                            <p className='products-price'>R$ {(item.produto.preco).toFixed(2)}</p>
+                                            <p className='products-price'>R$ {(item.produto.getPreco()).toFixed(2)}</p>
                                         </div>
 
                                         <p className= 'products-rest'>
-                                            {item.produto.categoria} -  Quantidade em estoque: {item.quantidade === 0 ? 'Indisponível' : item.quantidade} - {loja.getUnidade()}
+                                            {item.produto.getCategoria()} -  Quantidade em estoque: {item.quantidade === 0 ? 'Indisponível' : item.quantidade} - {loja.getUnidade()}
                                         </p>
 
                                     </div>

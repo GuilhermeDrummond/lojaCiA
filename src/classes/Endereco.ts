@@ -25,7 +25,31 @@ export default class Endereco {
         this.uf = uf
     }
 
-    getRua() {
+    getRua() : string {
         return this.rua
+    }
+
+    getBairro() : string {
+        return this.bairro
+    }
+
+    getComplemento() : string | undefined {
+        return this.complemento
+    }
+
+    getNumero() : number {
+        return this.numero
+    }
+
+    getCep() : string {
+        return this.cep
+    }
+
+    getCidade() : string {
+        return this.cidade
+    }
+
+    getUf() : string {
+        return this.uf
     }
 }

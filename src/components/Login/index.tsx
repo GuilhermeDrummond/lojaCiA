@@ -23,7 +23,7 @@ export function Login({ users, onLogin } : LoginProps) {
 
         if(userExist) {
             onLogin(userExist)
-            history.push('/products')
+            history.push('/')
         } else {
             alert('Usuário não encontrado')
         }

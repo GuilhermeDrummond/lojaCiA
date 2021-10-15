@@ -14,23 +14,23 @@ export default class Loja {
         this.estoque = estoque
     }
 
-    getEstoque() {
+    getEstoque() : Estoque {
         return this.estoque
     }
 
-    getCNPJ() {
+    getCNPJ() : string {
         return this.cnpj
     }
 
-    getEndereco() {
+    getEndereco() : Endereco {
         return this.endereco
     }
     
-    getUnidade() {
+    getUnidade() : string {
         return this.unidade
     }
 
-    setUnidade(nome : string){
+    setUnidade(nome : string) : void{
         this.unidade = nome
     }
 }

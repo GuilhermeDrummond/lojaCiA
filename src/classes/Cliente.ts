@@ -27,4 +27,20 @@ export default class Cliente {
     getNome() : string {
         return this.nome
     }
+
+    getCpf() : string {
+        return this.cpf
+    }
+
+    getTelefone() : string {
+        return this.telefone
+    }
+
+    getEndereco() : Endereco {
+        return this.endereco
+    }
+
+    getEmail() : string {
+        return this.email
+    }
 }

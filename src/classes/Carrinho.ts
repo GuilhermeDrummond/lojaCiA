@@ -13,7 +13,7 @@ export default class Carrinho {
     }
 
     adicionarProduto(prod : Produto) : void {
-        const produtoExiste = this.produtos.find(elem => elem.produto.id === prod.id)
+        const produtoExiste = this.produtos.find(elem => elem.produto.getId() === prod.getId())
         
         if(produtoExiste){
             produtoExiste.quantidade++
@@ -23,7 +23,7 @@ export default class Carrinho {
     }
 
     removerProduto(prod : Produto) : void {
-        const produto = this.produtos.find(elem => elem.produto.id === prod.id)
+        const produto = this.produtos.find(elem => elem.produto.getId() === prod.getId())
         if(produto) produto.quantidade--
     }
 
@@ -31,7 +31,7 @@ export default class Carrinho {
         let total = 0
 
         this.produtos.forEach(elem => {
-            total += elem.quantidade * elem.produto.preco
+            total += elem.quantidade * elem.produto.getPreco()
         })
 
         return total

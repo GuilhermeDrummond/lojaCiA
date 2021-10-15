@@ -14,10 +14,10 @@ export function Navbar({ onLogout, usuarioLogado } : NavbarProps) {
 
     return (
         <Nav>
-            <strong>A loja mais braba do BRASIL-SIL-SIL-SIL</strong>
+            <strong>Loja CiA</strong>
             
             <div>
-                <button onClick={() => history.push('/products')}>Produtos</button>
+                <button onClick={() => history.push('/')}>Produtos</button>
                 <button onClick={() => history.push('/cart')}>Carrinho</button>
                 {
                     usuarioLogado 

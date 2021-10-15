@@ -12,8 +12,8 @@ export default class Estoque {
         this.produtos = []
     }
 
-    adicionarProduto(prod : Produto, quantidade : number = 0) {
-        const produtoExiste = this.produtos.find(elem => elem.produto.id === prod.id)
+    adicionarProduto(prod : Produto, quantidade : number = 0) : void {
+        const produtoExiste = this.produtos.find(elem => elem.produto.getId() === prod.getId())
         
         if(produtoExiste){
             produtoExiste.quantidade++
@@ -22,9 +22,9 @@ export default class Estoque {
         }
     }  
 
-    removerProduto(produto : Produto) {
+    removerProduto(produto : Produto) : void {
         this.produtos.map(prod => {
-            if(prod.produto.id === produto.id) { 
+            if(prod.produto.getId() === produto.getId()) { 
                 prod.quantidade--
             }
             
@@ -32,7 +32,7 @@ export default class Estoque {
         })
     }
 
-    getProdutos() {
+    getProdutos() : Array<ListaProdutos> {
         return this.produtos
     }
 }

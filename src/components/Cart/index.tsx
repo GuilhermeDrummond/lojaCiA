@@ -30,19 +30,19 @@ export function Cart({ carrinho, onRemove, usuarioLogado } : CartProps) {
                 ? carrinho.getProdutos().map(elem => {
                     if(elem.quantidade > 0) {
                         return(
-                            <Card key={elem.produto.id}>
+                            <Card key={elem.produto.getId()}>
                                 <div className='products'>
                                     <img src="http://placehold.it/150x150" alt='Imagem ficticia'/>
     
                                     <div className='products-info'>
                                         <div>
-                                            <h1>{elem.produto.nome}</h1>
+                                            <h1>{elem.produto.getNome()}</h1>
     
-                                            <p className='products-price'>R$ {(elem.produto.preco).toFixed(2)}</p>
+                                            <p className='products-price'>R$ {(elem.produto.getPreco()).toFixed(2)}</p>
                                             <p className='products-quantity'>Quantidade {elem.quantidade}</p>
                                         </div>
     
-                                            <p className='products-total'>Total: R$ {(elem.produto.preco * elem.quantidade).toFixed(2)}</p>
+                                            <p className='products-total'>Total: R$ {(elem.produto.getPreco() * elem.quantidade).toFixed(2)}</p>
                                     </div>
                                 </div>
     

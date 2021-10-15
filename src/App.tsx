@@ -43,7 +43,7 @@ export default function App() {
     setCartList(newCartList)
 
     const lojaDoProduto = catalogoCompleto.find(elem => elem.getEstoque().getProdutos().find(item => {
-      return item.produto.id === prod.id
+      return item.produto.getId() === prod.getId()
     }))
 
     setCatalogoCompleto(catalogoCompleto.map(elem => {
@@ -81,7 +81,7 @@ export default function App() {
         <Navbar onLogout={() => setActiveUser(undefined)} usuarioLogado={activeUser}/>  
 
         <Route 
-          path='/products' 
+          path='/' exact
           render={props => <ProductsList {...props} onAddCart={handleAddCartStore} catalogoCompleto= {catalogoCompleto} />} 
         />
 
