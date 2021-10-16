@@ -1,6 +1,7 @@
 # Projeto Loja CiA  - Projeto para fins avaliativos e com objetivo de demonstrar princípios e conceitos de programação orientada ao objeto.
 
-![Loja Cia 1 0](https://user-images.githubusercontent.com/62221072/137566945-372aed97-3713-4e62-8537-33f06d098a70.jpg)
+![Trabalho](https://user-images.githubusercontent.com/62221072/137568454-bfb75365-ee7e-4883-9045-638631ff14c6.jpg)
+
 
 ## Especificações inciais da aplicação:
 * A aplicação simula a interface de uma loja online, tal como os casos de uso relacionados ao usuário/cliente.
