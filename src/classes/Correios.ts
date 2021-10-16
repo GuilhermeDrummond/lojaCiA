@@ -1,7 +1,12 @@
 import IEntrega from "./IEntrega";
 
 export default class Correios implements IEntrega {
-    despacharPedido() {
-        console.log('foda')
+
+    calcularValorPedido(valor : number) : number {
+        return valor + 15
     }    
+
+    getMetodoEntrega() : string {
+        return 'Correios'
+    }
 }

@@ -1,3 +1,4 @@
 export default interface IPagamento {
-    pagar() : number
+    calcularValorPagamento(valor : number) : number
+    getFormaPagamento() : string
 }

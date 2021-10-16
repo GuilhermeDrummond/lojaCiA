@@ -1,3 +1,4 @@
 export default interface IEntrega {
-    despacharPedido() : void
+    calcularValorPedido(valor : number) : number
+    getMetodoEntrega() : string
 }

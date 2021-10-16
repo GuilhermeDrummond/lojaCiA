@@ -15,6 +15,7 @@ import { Cart } from './components/Cart';
 import Loja from './classes/Loja';
 import { CheckOut } from './components/CheckOut';
 import { MyAccount } from './components/MyAccount';
+import Pedido from './classes/Pedido';
 
 
 export default function App() {
@@ -74,6 +75,12 @@ export default function App() {
     handleAddCart(item)        
   }
 
+  const [purchaseHistory, setPurchaseHistory] = useState<Pedido[]>([])
+
+  function handlePurchaseHistory(order : Pedido) {
+    setPurchaseHistory([order, ...purchaseHistory])
+  }
+
 
   return (
     <>
@@ -92,7 +99,7 @@ export default function App() {
 
         <Route 
           path='/checkout' 
-          render={props => <CheckOut {...props} carrinho={cartList}/>}
+          render={props => <CheckOut {...props} carrinho={cartList} onFinish={handlePurchaseHistory} limparCarrinho={setCartList}/>}
         />
 
         <Route 
@@ -107,7 +114,7 @@ export default function App() {
 
         <Route 
           path='/account' exact 
-          render={props => <MyAccount {...props} cliente={activeUser} />} 
+          render={props => <MyAccount {...props} cliente={activeUser} historico={purchaseHistory}/>} 
         />
       </Router>
 
