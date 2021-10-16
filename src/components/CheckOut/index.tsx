@@ -21,10 +21,8 @@ export function CheckOut({ carrinho, onFinish, limparCarrinho } : CheckoutProps)
 
     const history = useHistory()
 
-    const [payment, setPayment] = useState<IPagamento>({} as IPagamento)
-    const [shipment, setShipment] = useState<IEntrega>({} as IEntrega)
-
-    const [total, setTotal] = useState<number>(carrinho.totalCarrinho())
+    const [payment, setPayment] = useState<IPagamento | undefined>()
+    const [shipment, setShipment] = useState<IEntrega | undefined>()
 
     return (
         <Container>
@@ -60,7 +58,7 @@ export function CheckOut({ carrinho, onFinish, limparCarrinho } : CheckoutProps)
                     </label>
 
                     <label className="container">Transportadora
-                        <input type="radio" onClick={() => setShipment(new Correios())} value='Transportadora' name='envio'/>
+                        <input type="radio" onClick={() => setShipment(new Transportadora())} value='Transportadora' name='envio'/>
                         <span className="checkmark"></span>
                         <p>Entrega em 5 dias</p>
                         <p>Frete de R$ 25,00</p>
@@ -71,7 +69,14 @@ export function CheckOut({ carrinho, onFinish, limparCarrinho } : CheckoutProps)
 
             <FinalValue>
 
-                <p>Valor final da compra: R$ { total.toFixed(2) }</p>
+                <p>
+                    Valor total do carrinho: R$ {carrinho.totalCarrinho().toFixed(2)} <br/>
+                    Método de pagamento: R$ {payment?.calcularValorPagamento(carrinho.totalCarrinho()).toFixed(2) || (0).toFixed(2)} <br/>
+                    Custo da entrega: R$ {shipment?.calcularValorPedido().toFixed(2) || (0).toFixed(2)} <br/>
+                    Valor final da compra: R$ { 
+                    (carrinho.totalCarrinho() + (payment?.calcularValorPagamento(carrinho.totalCarrinho()) || 0) + (shipment?.calcularValorPedido() || 0)) .toFixed(2)
+                    }
+                </p>
                 
                 <button
                     onClick={() => {

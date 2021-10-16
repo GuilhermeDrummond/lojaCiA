@@ -1,4 +1,4 @@
 export default interface IEntrega {
-    calcularValorPedido(valor : number) : number
+    calcularValorPedido() : number
     getMetodoEntrega() : string
 }

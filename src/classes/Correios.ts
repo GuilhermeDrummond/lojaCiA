@@ -2,8 +2,8 @@ import IEntrega from "./IEntrega";
 
 export default class Correios implements IEntrega {
 
-    calcularValorPedido(valor : number) : number {
-        return valor + 15
+    calcularValorPedido() : number {
+        return 15
     }    
 
     getMetodoEntrega() : string {

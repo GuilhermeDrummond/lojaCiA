@@ -6,10 +6,10 @@ export default class Pedido {
     private id : number
     private carrinho : Carrinho
     private valorTotal : number
-    private metodoPagamento : IPagamento
-    private metodoEntrega : IEntrega
+    private metodoPagamento : IPagamento | undefined
+    private metodoEntrega : IEntrega | undefined
 
-    constructor(carrinho : Carrinho, metodoPagamento : IPagamento, metodoEntrega : IEntrega) {
+    constructor(carrinho : Carrinho, metodoPagamento : IPagamento | undefined, metodoEntrega : IEntrega | undefined) {
         this.id = Math.floor(Math.random() * 10000)
         this.carrinho = carrinho
         this.valorTotal = carrinho.totalCarrinho() 
@@ -21,12 +21,12 @@ export default class Pedido {
         return this.carrinho.getProdutos()
     }
 
-    getFormaPagamento() : string {
-        return this.metodoPagamento.getFormaPagamento()
+    getFormaPagamento() : string | undefined {
+        return this.metodoPagamento?.getFormaPagamento()
     }
 
-    getMetodoEntrega() : string {
-        return this.metodoEntrega.getMetodoEntrega()
+    getMetodoEntrega() : string | undefined{
+        return this.metodoEntrega?.getMetodoEntrega()
     }
 
     getValorTotal() : number {
