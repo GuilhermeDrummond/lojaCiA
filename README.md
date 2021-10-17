@@ -42,7 +42,7 @@
 * IEntrega
 * IPagamento
 
-<h2>A classe <Strong>Gerador</Strong> foi usada apenas para simular o banco de dados com as informações necessárias para funcionamento da aplicação.</h2>
+<h4>A classe <Strong>Gerador</Strong> foi usada apenas para simular o banco de dados com as informações necessárias para funcionamento da aplicação.</h4>
 
 ## Durante a criação das classes nos atentamos a três dos príncipios mais importantes em orientação ao objeto, vindo do famoso S.O.L.I.D:
 
