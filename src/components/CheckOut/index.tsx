@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Boleto from "../../classes/Boleto";
@@ -74,7 +73,7 @@ export function CheckOut({ carrinho, onFinish, limparCarrinho } : CheckoutProps)
                     Método de pagamento: R$ {payment?.calcularValorPagamento(carrinho.totalCarrinho()).toFixed(2) || (0).toFixed(2)} <br/>
                     Custo da entrega: R$ {shipment?.calcularValorPedido().toFixed(2) || (0).toFixed(2)} <br/>
                     Valor final da compra: R$ { 
-                    (carrinho.totalCarrinho() + (payment?.calcularValorPagamento(carrinho.totalCarrinho()) || 0) + (shipment?.calcularValorPedido() || 0)) .toFixed(2)
+                    (carrinho.totalCarrinho() + (payment?.calcularValorPagamento(carrinho.totalCarrinho()) || 0) + (shipment?.calcularValorPedido() || 0)).toFixed(2)
                     }
                 </p>
                 
