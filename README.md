@@ -34,14 +34,18 @@ fortemente tipada. Adicionalmente chegamos a conclusão de que a interface visua
 * IPagamento
 
 ## Durante a criação das classes nos atentamos a três dos príncipios mais importantes em orientação ao objeto, vindo do famoso S.O.L.I.D:
-*SRP — Single Responsibility Principle:
-Princípio da Responsabilidade Única — Uma classe deve ter um, e somente um, motivo para mudar.
-Esse princípio declara que uma classe deve ser especializada em um único assunto e possuir apenas uma responsabilidade dentro do software, ou seja, a classe deve ter uma única tarefa ou ação para executa:
+
+*SRP — <Strong>Single Responsibility Principle (Princípio da Responsabilidade Única):</Strong>
+<p>Uma classe deve ter um, e somente um, motivo para mudar.
+Esse princípio declara que uma classe deve ser especializada em um único assunto e possuir apenas uma responsabilidade dentro do software, ou seja, a classe deve ter uma única tarefa ou ação para executa. Para fins do projeto:</p>
   <ol>
-  <li> As classes impleemntadas são coesas com sua função;
-  <li> Tem uma única responsabilidade o que gera menos dependências;
+  <li> As classes implementadas são coesas com sua função;
+  <li> Têm uma única responsabilidade o que gera menos dependências;
   <li> E são fáceis de ser reutilizadas.
   </ol>
+ 
+ 
+
 
 
 
