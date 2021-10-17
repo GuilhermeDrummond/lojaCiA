@@ -85,4 +85,4 @@ export const Loja3 : Loja = new Loja('Unidade de Iconha', '62.622.452/0001-62', 
 // =======================================================================================================
 
 const end4 = new Endereco('Rua dos Anjos', 'Céu Azul', 33, '29280-000', 'Divinópolis', 'ES', 'Você vai saber quando ver')
-export const clientePadrao = new Cliente('Ricardo', '123.654.741-12', '(27) 98765-4321', 'a', 'a', end4)
+export const clientePadrao = new Cliente('Ricardo', '123.654.741-12', '(27) 98765-4321', 'ricardo@uvv.br', 'admin', end4)
