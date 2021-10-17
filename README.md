@@ -17,7 +17,31 @@ fortemente tipada. Adicionalmente chegamos a conclusão de que a interface visua
 ## Especificações do código:
 
 ### Classes:
-*
-*
-*
-*
+* Loja
+* Cliente
+* Estoque
+* Produto
+* Endereco
+* Carrinho
+* Pedido
+* Boleto
+* Cartão
+* Correios
+* Transportadora
+
+### Interfaces:
+* IEntrega
+* IPagamento
+
+## Durante a criação das classes nos atentamos a três dos príncipios mais importantes em orientação ao objeto, vindo do famoso S.O.L.I.D:
+*SRP — Single Responsibility Principle:
+Princípio da Responsabilidade Única — Uma classe deve ter um, e somente um, motivo para mudar.
+Esse princípio declara que uma classe deve ser especializada em um único assunto e possuir apenas uma responsabilidade dentro do software, ou seja, a classe deve ter uma única tarefa ou ação para executa:
+  <ol>
+  <li> As classes impleemntadas são coesas com sua função;
+  <li> Tem uma única responsabilidade o que gera menos dependências;
+  <li> E são fáceis de ser reutilizadas.
+  </ol>
+
+
+
