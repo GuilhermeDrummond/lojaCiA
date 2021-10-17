@@ -2,7 +2,7 @@
 <br>
 <h2> Integrandes do Grupo:</h2>
    <ul>
-    <li>  Guilherme Catrinque
+    <li>  Guilherme Catrinque Drummond Fernandes
     <li>  Maria Isabel Santana
     <li>  Rodrigo Pela Hernandes
     <li>  Windsor Lóss
